@@ -2,11 +2,9 @@
 
 A Flask web application.
 
-# About
-- A grade 12 ABM Research PrOject
 #  Water Station Management System
 
-A full-stack web application for managing a water refilling station.
+A full-stack web application for managing a water refilling station for Grade 12 ABM Research Project.
 Built using **React (Vite)** for the frontend and **Node.js + Express + PostgreSQL** for the backend.
 
 ---
