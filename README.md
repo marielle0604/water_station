@@ -3,7 +3,7 @@
 _________________
 **Project Overview**
 AquaVoice is a web-based application that bridges the gap between water refilling stations and their customers. It provides a platform for customers to share their experiences and for station administrators to monitor service quality and customer satisfaction.
--------------------
+_________________
 **Key Features**
 - Client Side
 * Submit feedback for specific water stations
@@ -20,19 +20,19 @@ AquaVoice is a web-based application that bridges the gap between water refillin
 * Station performance monitoring
 * Recent feedbacks tracking
 * User management interface
-
+_________________
 **Technology Stack**
 - Backend: Python Flask
 - Frontend: HTML, CSS, JavaScript
 - Database: PostgreSQL
 - Deployment: Railway.app
-
+_________________
 **Installation & Setup**
 - Prerequisites
 * Python 3.8 or higher
 * PostgreSQL
 * pip (Python package manager)
-
+_________________
 **Local Development Setup**
 - Clone the repository
   * git clone https://github.com/marielle0604/water_station.git
@@ -56,7 +56,7 @@ cd water_station
 - Access the application
   * Customer portal: http://localhost:5000
   * Admin login: http://localhost:5000/admin/login
-
+_________________
 **Usage Guide**
 - For Customers
  * Navigate to the feedback form
@@ -71,7 +71,7 @@ cd water_station
  * View dashboard with key metrics
  * Monitor station performance
  * View recent feedbacksManage user accounts
-
+_________________
 **Database Schema**
 -- Users table
 CREATE TABLE users (
@@ -103,7 +103,7 @@ CREATE TABLE feedbacks (
     suggestion TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
+_________________
 **Deployment**
 The application is deployed on Railway.app:
 * Live URL:(https://water-station-website-production-9018.up.railway.app/).
