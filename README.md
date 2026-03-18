@@ -1,11 +1,9 @@
 **AquaVoice - Water Station Feedback System**
-https://image.png
-
-- A feedback management system for water refilling stations, developed as part of a Grade 12 ABM student research project. The system allows customers to submit feedback for different water stations and enables administrators to monitor and manage feedback effectively.
-
+ - A feedback management system for water refilling stations, developed as part of a Grade 12 ABM student research project. The system allows customers to submit feedback for different water stations and enables administrators to monitor and manage feedback effectively.
+_________________
 **Project Overview**
 AquaVoice is a web-based application that bridges the gap between water refilling stations and their customers. It provides a platform for customers to share their experiences and for station administrators to monitor service quality and customer satisfaction.
-
+-------------------
 **Key Features**
 - Client Side
 * Submit feedback for specific water stations
@@ -109,3 +107,4 @@ CREATE TABLE feedbacks (
 **Deployment**
 The application is deployed on Railway.app:
 * Live URL:(https://water-station-website-production-9018.up.railway.app/).
+
