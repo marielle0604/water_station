@@ -1,179 +1,111 @@
-# Flask Project
+**AquaVoice - Water Station Feedback System**
+https://image.png
 
-A Flask web application.
+- A feedback management system for water refilling stations, developed as part of a Grade 12 ABM student research project. The system allows customers to submit feedback for different water stations and enables administrators to monitor and manage feedback effectively.
 
-#  Water Station Management System
+**Project Overview**
+AquaVoice is a web-based application that bridges the gap between water refilling stations and their customers. It provides a platform for customers to share their experiences and for station administrators to monitor service quality and customer satisfaction.
 
-A full-stack web application for managing a water refilling station for Grade 12 ABM Research Project.
-Built using **React (Vite)** for the frontend and **Node.js + Express + PostgreSQL** for the backend.
-
----
-
-##  Features
+**Key Features**
 - Client Side
+* Submit feedback for specific water stations
+* Rate stations with star ratings (1-5)
+* Provide detailed feedback and suggestions
+* Optional contact information submission
 
-* User Registration & Login
-* User Profile Management
-* Book Appointments (Water Delivery / Pickup)
-* Send Feedback
-* View Transaction History
-* Responsive Design (Mobile-Friendly)
+- Admin Side
+* Secure admin authentication
+* Dashboard with key metrics:
+* Total feedbacks received
+* Average rating across all stations
+* Number of active stations
+* Station performance monitoring
+* Recent feedbacks tracking
+* User management interface
 
----
+**Technology Stack**
+- Backend: Python Flask
+- Frontend: HTML, CSS, JavaScript
+- Database: PostgreSQL
+- Deployment: Railway.app
 
-- Admin Dashboard
-
-* View Customer Feedback
-* Manage Appointments
-* Monitor Inventory (Water gallons, supplies)
-* View Daily & Yearly Analytics
-* Track Transactions
-
----
-
-##  Tech Stack
-- Frontend
-
-* React (Vite)
-* React Router
-* CSS / Responsive Design
-
-- Backend
-
-* Node.js
-* Express.js
+**Installation & Setup**
+- Prerequisites
+* Python 3.8 or higher
 * PostgreSQL
-* JWT Authentication
+* pip (Python package manager)
 
----
+**Local Development Setup**
+- Clone the repository
+  * git clone https://github.com/marielle0604/water_station.git
+cd water_station
+- Create and activate virtual environment
+  * python -m venv venv
+      # On Windows
+      venv\Scripts\activate
+      # On Mac/Linux
+      source venv/bin/activate
+- Install dependencies
+  * pip install -r requirements.txt
+- Set up PostgreSQL database
+  * CREATE DATABASE aquavoice;
+    -- Run the schema.sql file to create tables
+- Configure environment variables
+   * DATABASE_URL=postgresql://username:password@localhost/aquavoice
+   * SECRET_KEY=your_secret_key_here
+- Run the application
+  * python app.py
+- Access the application
+  * Customer portal: http://localhost:5000
+  * Admin login: http://localhost:5000/admin/login
 
-##  Project Structure
+**Usage Guide**
+- For Customers
+ * Navigate to the feedback form
+ * Select your water station from the dropdown
+ * Enter your name and contact information (optional)
+ * Provide your rating and feedback
+ * Submit the form
 
-```
-water-station/
-│
-├── frontend/
-│   └── src/
-│       ├── components/
-│       ├── pages/
-│       └── App.jsx
-│
-├── backend/
-│   ├── server.js
-│   ├── db.js
-│   ├── routes/
-│   ├── controllers/
-│   └── models/
-│
-└── README.md
-```
+- For Administrators
+ * Login at /admin/login
+ * Demo credentials: admin / admin123
+ * View dashboard with key metrics
+ * Monitor station performance
+ * View recent feedbacksManage user accounts
 
----
+**Database Schema**
+-- Users table
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(200) NOT NULL,
+    role VARCHAR(20) DEFAULT 'admin',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
+-- Stations table
+CREATE TABLE stations (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    is_active BOOLEAN DEFAULT true,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
+-- Feedbacks table
+CREATE TABLE feedbacks (
+    id SERIAL PRIMARY KEY,
+    station_id INTEGER REFERENCES stations(id),
+    customer_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100),
+    phone VARCHAR(20),
+    rating INTEGER CHECK (rating >= 1 AND rating <= 5),
+    feedback TEXT,
+    suggestion TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-### 1️ Clone the Repository
-
-```
-git clone https://github.com/your-username/water-station.git
-cd water-station
-```
-
----
-
-### 2️Setup Backend
-
-```
-cd backend
-npm install
-```
-
-Create `.env` file:
-
-```
-PORT=5000
-DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/waterstation
-JWT_SECRET=your_secret_key
-```
-
-Run backend:
-
-```
-npm run dev
-```
-
----
-
-### 3️Setup PostgreSQL
-Login to PostgreSQL:
-
-```
-sudo -u postgres psql
-```
-
-Create database:
-
-```
-CREATE DATABASE waterstation;
-```
-
----
-
-### 4️Setup Frontend
-
-```
-cd ../frontend
-npm install
-npm run dev
-```
-
-Open in browser:
-
-```
-http://localhost:5173
-```
-
----
-
-## Authentication
-
-* Uses JWT (JSON Web Token)
-* Secure login & protected routes
-* Role-based access (Admin & Client)
-
----
-
-## Sample Modules
-
-* **Appointments** – Schedule water delivery
-* **Feedback** – Customer suggestions & issues
-* **Inventory** – Track water gallons & supplies
-* **Transactions** – Payment and order records
-* **Analytics** – Daily & yearly reports
-
----
-
-## Responsive Design
-
-* Works on desktop, tablet, and mobile devices
-* Optimized UI for better user experience
-
----
-
-## Future Improvements
-
-* Payment Integration (GCash / PayMaya)
-* SMS/Email Notifications
-* Real-time updates using WebSockets
-* Map integration for delivery tracking
-
----
-
-## Author
-
-**Marielle Modesto**
-BS Information Technology Student
-
-
-#Deployed in Railway:
-- https://water-station-website-production-9018.up.railway.app/
+**Deployment**
+The application is deployed on Railway.app:
+* Live URL:(https://water-station-website-production-9018.up.railway.app/).
