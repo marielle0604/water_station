@@ -8,3 +8,6 @@ A Flask web application.
 2. Activate environment: `source venv/bin/activate`
 3. Install dependencies: `pip install -r requirements.txt`
 4. Run: `python app.py`
+
+#Deployed in Railway:
+- https://water-station-website-production-9018.up.railway.app/
